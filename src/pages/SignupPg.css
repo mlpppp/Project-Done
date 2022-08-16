@@ -1,0 +1,37 @@
+.signup-form {
+    width: 400px;
+    max-height: 1200px;
+    margin:50px auto;
+    background: #fff;
+    box-shadow: 5px 5px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.signup-form h3 {
+    margin: 35px;
+    font-size: 1.4em;
+}
+
+.form-field {
+    width: 82%;
+    margin: 0 auto 25px;
+}
+
+.form-field label{
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.signup-form button {
+    margin: 20px auto 20px 40px;
+    width: 100px;
+}
+.signup-form .error{
+    box-sizing: border-box;
+    width: 82%;
+    margin: auto;
+}
+.signup-form .signup-link{
+    margin: 0px auto 20px 40px;
+}

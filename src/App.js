@@ -1,37 +1,61 @@
-import './App.css'
-import { BrowserRouter, Route, Link, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { useAuthContext } from './hooks/useAuthContext';
+
+import './App.css'
+// components
+import Header from './components/Header'
+import Navbar from './components/Navbar'
+import UserBar from './components/UserBar'
 
 // pages
 import HomePg from './pages/HomePg'
 import LoginPg from './pages/LoginPg'
 import ProjectPg from './pages/ProjectPg';
+import CreatePrjPg from './pages/CreatePrjPg';
 import SignupPg from './pages/SignupPg'
 
 function App() {
   const { user, authIsReady } = useAuthContext()
-  console.log(user)
-  console.log(authIsReady)
+
   return (
     <div className="App">
-      {authIsReady &&
+      {authIsReady &&  
         <BrowserRouter>
-          <Switch>
-            <Route exact path='/'>
-              {user && <HomePg/> }
-              {!user && <Redirect to='/login'/> }
-            </Route>
+          {user && <Navbar user={user}/>}
+          <div className="body-container">
+            <Header/>
+            <Switch>
+              <Route exact path='/'>
+                {user && <HomePg/> }
+                {!user && <Redirect to='/login'/> }
+              </Route>
 
-            <Route exact path='/login'>
-              {user && <Redirect to='/'/> }
-              {!user && <LoginPg/> }
-            </Route>
+              <Route exact path='/login'>
+                {user && <Redirect to='/'/> }
+                {!user && <LoginPg/> }
+              </Route>
 
-            <Route exact path='/signup'>
-              {user && <Redirect to='/'/> }
-              {!user && <SignupPg/> }
-            </Route>
-          </Switch>
+              <Route exact path='/signup'>
+                {user && <Redirect to='/'/> }
+                {!user && <SignupPg/> }
+              </Route>
+
+              <Route exact path='/create'>
+                {user && <CreatePrjPg/> }
+                {!user && <Redirect to='/login'/> }
+              </Route>
+
+              <Route exact path='/projects/:id'>
+                {user && <ProjectPg/> }
+                {!user && <Redirect to='/login'/> }
+              </Route>
+              <Route path="*">   
+                {user && <Redirect to='/'/> }
+                {!user && <Redirect to='/login'/> }
+              </Route>
+            </Switch>
+          </div>
+          {user && <UserBar/>}
         </BrowserRouter>
       }
     </div>

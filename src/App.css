@@ -1,7 +1,7 @@
 .App {
   display: flex;
 }
-.App .container{
+.App .body-container{
   flex-grow: 1;
   padding: 0 60px;
 }

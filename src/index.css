@@ -7,6 +7,9 @@
   --primary-color: #8d69f1;
   --highlight-color: #d13267;
   --bg-color: #f4f4f4;
+  --avatar-large:55px;
+  --avatar-middle:40px;
+  --avatar-small:30px;
 }
 
 /* base styles */
@@ -72,4 +75,9 @@ textarea {
   border-radius: 4px;
   padding: 8px;
   margin: 10px 0;
+}
+
+.avatar {
+  background-color: #dad8d8;
+  border-radius: 50%;
 }

@@ -1,0 +1,79 @@
+.user-bar {
+    max-width: 210px;
+    background: #fff;
+    box-shadow: -5px 0px 5px rgba(0, 0, 0, 0.03);
+    height: 100vh;
+    box-sizing: border-box;
+    padding: 25px;
+    position: relative;
+}
+
+.user-bar h3{
+    text-align: end;
+    padding-bottom: 15px;
+    border-bottom: #dcd8d8 solid 1px;
+}
+
+.user-status-list {
+    margin-top:50px;
+}
+
+.user-status {
+    display:flex;
+    align-items: center;
+    justify-content: right;
+    margin: 20px 0;
+}
+
+.user-status .avatar {
+    width: var(--avatar-middle);
+    height: var(--avatar-middle);
+    margin-left: 8px;
+}
+
+.user-status p {
+    margin-left: 8px;
+}
+
+
+.user-status span{
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background: #0ebb50;
+    border-radius: 50%;
+}
+
+.user-bar .collapse-btn {
+    width: var(--avatar-middle);
+    height: var(--avatar-middle);
+    position: absolute;
+    bottom: 50px;
+    left: 20px;
+    display: block;
+}
+
+
+.user-bar.user-bar-collapse {
+    width: 48px;
+    padding: 0px;
+    font-size: 0.8em;
+    text-align: center;
+}
+
+.user-bar.user-bar-collapse .avatar {
+    margin: auto;
+}
+
+.user-bar.user-bar-collapse h3{
+    text-align: center !important;
+}
+
+.user-bar.user-bar-collapse .avatar.avatar-aurora {
+    border: #0ebb50 3px solid;
+}
+
+.user-bar.user-bar-collapse .collapse-btn  {
+    left:2px;
+}
+
