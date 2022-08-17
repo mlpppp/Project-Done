@@ -8,9 +8,9 @@ import Navbar from './components/Navbar'
 import UserBar from './components/UserBar'
 
 // pages
-import HomePg from './pages/HomePg'
+import HomePg from './pages/Home/HomePg'
 import LoginPg from './pages/LoginPg'
-import ProjectPg from './pages/ProjectPg';
+import ProjectPg from './pages/Project/ProjectPg';
 import CreatePrjPg from './pages/CreatePrjPg';
 import SignupPg from './pages/SignupPg'
 

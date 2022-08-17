@@ -1,0 +1,4 @@
+.project-detail img {
+    width: var(--avatar-large);
+    height: var(--avatar-large);
+}

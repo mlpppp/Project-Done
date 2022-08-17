@@ -19,7 +19,7 @@ export default function UserBar() {
             <div className="user-status-list">
                 {error && <p className='error'>{error}</p> }
                 {users && users.map((usr)=>(
-                    <div className="user-status" key={usr.name}>
+                    <div key={usr.id} className="user-status" >
                         {usr.online && !isCollapse && <span></span>}
                         {!isCollapse && <p>{usr.displayName}</p>}
                         <img src={usr.photoURL} alt="" className={`avatar${(isCollapse && usr.online) ? ' avatar-aurora':''}`}/> 

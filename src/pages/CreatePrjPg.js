@@ -5,8 +5,10 @@ import { useFirestore } from "../hooks/useFirestore"
 import { useCollection } from "../hooks/useCollection"
 import { timestamp } from "../firebase/config"
 import { useAuthContext } from "../hooks/useAuthContext"
+
 import './CreatePrjPg.css'
-const projectCategoriesOptions = [
+
+export const projectCategoriesOptions = [
   { value: 'development', label: 'Development' },
   { value: 'design', label: 'Design' },
   { value: 'sales', label: 'Sales' },

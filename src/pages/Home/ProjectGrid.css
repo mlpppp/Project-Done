@@ -1,0 +1,23 @@
+.project-grid  {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 35px;
+}
+
+.card {
+    background: #fff;
+    box-sizing: border-box;
+    padding: 15px;
+    box-shadow: 5px 5px rgba(0, 0, 0, 0.05);
+}
+
+.project-grid .card {
+    cursor: pointer;
+}
+
+.project-grid .project img {
+    width: var(--avatar-small);
+    height: var(--avatar-small);
+    margin: 20px 10px;
+}
