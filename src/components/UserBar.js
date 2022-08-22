@@ -14,23 +14,23 @@ export default function UserBar() {
         setIsCollapse(!isCollapse)
     }
     return (
-        <div className={`user-bar ${isCollapse ? 'user-bar-collapse':''}`}>
-            <h3>All Users</h3>
-            <div className="user-status-list">
-                {error && <p className='error'>{error}</p> }
-                {users && users.map((usr)=>(
-                    <div key={usr.id} className="user-status" >
-                        {usr.online && !isCollapse && <span></span>}
-                        {!isCollapse && <p>{usr.displayName}</p>}
-                        <img src={usr.photoURL} alt="" className={`avatar${(isCollapse && usr.online) ? ' avatar-aurora':''}`}/> 
-                    </div>
-                ))}
+            <div className={`user-bar ${isCollapse ? 'user-bar-collapse':''}`}>
+                <h3>All Users</h3>
+                <div className="user-status-list">
+                    {error && <p className='error'>{error}</p> }
+                    {users && users.map((usr)=>(
+                        <div key={usr.id} className="user-status" >
+                            {usr.online && !isCollapse && <span></span>}
+                            {!isCollapse && <p>{usr.displayName}</p>}
+                            <img src={usr.photoURL} alt="" className={`avatar${(isCollapse && usr.online) ? ' avatar-aurora':''}`}/> 
+                        </div>
+                    ))}
+                </div>
+            
+                { !isCollapse && <img src={arrowRight} alt="" className='collapse-btn'
+                    onClick={handleFolding}/>}
+                { isCollapse && <img src={arrowLeft} alt="" className='collapse-btn'
+                    onClick={handleFolding}/>}
             </div>
-        
-            { !isCollapse && <img src={arrowRight} alt="" className='collapse-btn'
-                onClick={handleFolding}/>}
-            { isCollapse && <img src={arrowLeft} alt="" className='collapse-btn'
-                onClick={handleFolding}/>}
-        </div>
     )
 }

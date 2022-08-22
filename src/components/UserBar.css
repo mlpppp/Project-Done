@@ -1,12 +1,18 @@
+#user-bar-container{
+    height: 100vh;
+}
+
 .user-bar {
+    position: sticky;
+    top:0;
     max-width: 210px;
-    /* height: 100vh; */
     background: #fff;
     box-shadow: -5px 0px 5px rgba(0, 0, 0, 0.03);
     box-sizing: border-box;
     padding: 25px;
-    position: relative;
+    /* position: relative; */
 }
+
 
 .user-bar h3{
     text-align: end;

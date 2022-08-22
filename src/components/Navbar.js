@@ -5,21 +5,23 @@ import { dummyAvatar } from './UserBar'
 import './Navbar.css'
 export default function Navbar({user}) {
     return (
-        <nav className="left-bar">
-            <div className="user-info">
-                <img src={user.photoURL} alt="" className='avatar'/>
-                <h3>{`Hey, ${user.displayName}`}</h3>
-            </div>
-            <div className="nav-selector">
-                    <NavLink exact to="/">
-                        <img src={DashboardIcon} alt="" />
-                        <p>Dashboard</p>
-                    </NavLink>              
+        <nav>
+            <div id="nav-container">
+                <div className="user-info">
+                    <img src={user.photoURL} alt="" className='avatar'/>
+                    <h3>{`Hey, ${user.displayName}`}</h3>
+                </div>
+                <div className="nav-selector">
+                        <NavLink exact to="/">
+                            <img src={DashboardIcon} alt="" />
+                            <p>Dashboard</p>
+                        </NavLink>              
 
-                    <NavLink exact to="/create">
-                        <img src={AddIcon} alt="" />
-                        <p>New Project</p>
-                    </NavLink>
+                        <NavLink exact to="/create">
+                            <img src={AddIcon} alt="" />
+                            <p>New Project</p>
+                        </NavLink>
+                </div>
             </div>
 
 

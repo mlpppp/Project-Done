@@ -1,14 +1,18 @@
-.left-bar {
-    width: auto;
-    /* max-width: 180px; */
-    box-sizing: border-box;
+nav {
     background: var(--primary-color);
     box-shadow: 5px 0px 5px rgba(0, 0, 0, 0.05);
+}
+
+#nav-container {
+    position: sticky;
+    top:0;
+    width: auto;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
 }
 
-.left-bar .user-info{
+#nav-container .user-info{
     box-sizing: border-box;
     border-bottom: #ab91f3 solid 2px;
 }
