@@ -1,7 +1,16 @@
 .App {
   display: flex;
+  height:100%; /* force the BODY element to match the height of the HTML element */
+  position: relative;
 }
 .App .body-container{
   flex-grow: 1;
   padding: 0 60px;
+}
+
+#bar-cloud {
+  max-width: 0px;
+  padding: 0px;
+  height: 100vh;
+  position: relative;
 }

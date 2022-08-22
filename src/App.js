@@ -56,6 +56,7 @@ function App() {
             </Switch>
           </div>
           {user && <UserBar/>}
+          {user && <div id="bar-cloud"></div> }
         </BrowserRouter>
       }
     </div>
