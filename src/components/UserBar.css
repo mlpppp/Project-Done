@@ -1,8 +1,8 @@
 .user-bar {
     max-width: 210px;
+    /* height: 100vh; */
     background: #fff;
     box-shadow: -5px 0px 5px rgba(0, 0, 0, 0.03);
-    height: 100vh;
     box-sizing: border-box;
     padding: 25px;
     position: relative;
@@ -47,9 +47,9 @@
 .user-bar .collapse-btn {
     width: var(--avatar-middle);
     height: var(--avatar-middle);
-    position: absolute;
+    position: fixed;
     bottom: 50px;
-    left: 20px;
+    right: 100px;
     display: block;
 }
 
@@ -74,6 +74,6 @@
 }
 
 .user-bar.user-bar-collapse .collapse-btn  {
-    left:2px;
+    right:2px;
 }
 

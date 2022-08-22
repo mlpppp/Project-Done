@@ -3,6 +3,8 @@ import firebase from 'firebase/app';
 import { timestamp, projectFirestore } from "../../firebase/config"
 import { useAuthContext } from "../../hooks/useAuthContext";
 import useFetchListId from "../../hooks/useFetchListId";
+import formatDistanceToNow from "date-fns/formatDistanceToNow";
+
 import './ProjectComment.css'
 export default function ProjectComment({userAvatars, userNames, commentIdList, prjId}) {
     const  [comment, setComment] = useState('')
@@ -61,16 +63,19 @@ export default function ProjectComment({userAvatars, userNames, commentIdList, p
             return
         }
     }
-
     return (
         <div className="comment">
             <h3>Project Comments</h3>
+
             {commentList && commentList.map((cmt) => (
-                <div className="project-comment" key={comment.id}>
-                    {/* <img src={userAvatars[comment.createdBy]} alt="" /> */}
+                <div className="project-comment card" key={comment.id}>
+                    <img src={userAvatars[cmt.createdBy]} className='avatar-small' />
+                    <span>{userNames[cmt.createdBy]}</span>
+                    <p>{`${formatDistanceToNow(cmt.createdAt.toDate(), {addSuffix:true})}`}</p>
                     <p>{cmt.comment}</p>
                 </div>
             ))}
+
             <div className="add-project-comment">
                 <h3>Add new comments:</h3>
                 <form onSubmit={handleComment}>
