@@ -1,4 +1,7 @@
-.project-detail img {
-    width: var(--avatar-large);
-    height: var(--avatar-large);
+.project {
+    display: flex;
+    flex-direction: row;
+    margin-top: 80px;
 }
+
+

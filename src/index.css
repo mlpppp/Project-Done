@@ -74,8 +74,10 @@ input, textarea {
   border: 1px solid #ddd;
   border-radius: 4px;
 }
-textarea {
-  min-height: 160px;
+
+.timestamp {
+  font-size: 0.8em;
+  margin: 3px 0;
 }
 .error {
   color: red;

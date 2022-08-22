@@ -1,0 +1,36 @@
+.project-brief {
+    width: 65%;
+    margin-right: 60px; 
+    height: 100%;
+}
+
+.project-detail {
+    padding: 25px;
+}
+
+.project-detail .timestamp{
+    color: var(--primary-color);
+    font-weight: 500;
+}
+.project-detail img {
+    width: var(--avatar-large);
+    height: var(--avatar-large);
+}
+
+.project-detail .text-content {
+    color: var(--text-color);
+    margin: 25px 0;
+    font-size: 1.1em;
+}
+
+.project-detail h4 {
+    margin-bottom: 20px;
+}
+
+.project-detail .avatar-large{
+    margin-left: 10px;
+}
+
+.project-brief .complete-btn {
+    margin-top: 25px;
+}

@@ -4,8 +4,8 @@ import { timestamp, projectFirestore } from "../../firebase/config"
 import { useAuthContext } from "../../hooks/useAuthContext";
 import useFetchListId from "../../hooks/useFetchListId";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
-
 import './ProjectComment.css'
+
 export default function ProjectComment({userAvatars, userNames, commentIdList, prjId}) {
     const  [comment, setComment] = useState('')
     const  [commentError, setCommentError] = useState(null)
@@ -64,27 +64,29 @@ export default function ProjectComment({userAvatars, userNames, commentIdList, p
         }
     }
     return (
-        <div className="comment">
+        <div className="comment-block">
             <h3>Project Comments</h3>
-
-            {commentList && commentList.map((cmt) => (
-                <div className="project-comment card" key={comment.id}>
-                    <img src={userAvatars[cmt.createdBy]} className='avatar-small' />
-                    <span>{userNames[cmt.createdBy]}</span>
-                    <p>{`${formatDistanceToNow(cmt.createdAt.toDate(), {addSuffix:true})}`}</p>
-                    <p>{cmt.comment}</p>
-                </div>
-            ))}
-
+            <div className="comment-list">
+                {commentList && commentList.map((cmt) => (
+                    <div className="project-comment card" key={comment.id}>
+                        <div className="avatar-name">
+                            <img src={userAvatars[cmt.createdBy]} className='avatar-small' />
+                            <span>{userNames[cmt.createdBy]}</span>
+                        </div>
+                        <p className="timestamp" >{`${formatDistanceToNow(cmt.createdAt.toDate(), {addSuffix:true})}`}</p>
+                        <p className="text-content">{cmt.comment}</p>
+                    </div>
+                ))}
+            </div>
             <div className="add-project-comment">
-                <h3>Add new comments:</h3>
+                <h3>Leave a Comment:</h3>
                 <form onSubmit={handleComment}>
                     <textarea id="comment"
                         value={comment}
                         onChange={(e)=>setComment(e.target.value)}/>
                     { commentError && <p className="error">{commentError}</p> }
                     { remoteError && <p className="error">{remoteError}</p> }
-                    <button className='btn'>Add Comment</button>
+                    <button className='btn'>Submit</button>
                 </form>
             </div>
         </div>

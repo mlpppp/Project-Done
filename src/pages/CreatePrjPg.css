@@ -7,6 +7,9 @@
     flex-direction: column;
 }
 
+.create-form textarea{
+    min-height: 160px;
+}
 .create-form h3{
     margin: 35px;
     font-size: 1.4em;
