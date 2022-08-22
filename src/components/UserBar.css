@@ -1,20 +1,20 @@
-#user-bar-container{
-    height: 100vh;
+#user-bar {
+    background: #fff;
+    box-shadow: -5px 0px 5px rgba(0, 0, 0, 0.03);
 }
 
-.user-bar {
+.user-bar-container {
+    display:flex;
+    flex-direction: column;
     position: sticky;
     top:0;
     max-width: 210px;
-    background: #fff;
-    box-shadow: -5px 0px 5px rgba(0, 0, 0, 0.03);
     box-sizing: border-box;
     padding: 25px;
-    /* position: relative; */
 }
 
 
-.user-bar h3{
+.user-bar-container h3{
     text-align: end;
     padding-bottom: 15px;
     border-bottom: #dcd8d8 solid 1px;
@@ -50,7 +50,7 @@
     border-radius: 50%;
 }
 
-.user-bar .collapse-btn {
+.user-bar-container .collapse-btn {
     width: var(--avatar-middle);
     height: var(--avatar-middle);
     position: fixed;
@@ -60,26 +60,28 @@
 }
 
 
-.user-bar.user-bar-collapse {
+.user-bar-container.user-bar-container-collapse {
+    display:flex;
+    flex-direction: column;
     width: 48px;
     padding: 0px;
     font-size: 0.8em;
     text-align: center;
 }
 
-.user-bar.user-bar-collapse .avatar {
+.user-bar-container.user-bar-container-collapse .avatar {
     margin: auto;
 }
 
-.user-bar.user-bar-collapse h3{
+.user-bar-container.user-bar-container-collapse h3{
     text-align: center !important;
 }
 
-.user-bar.user-bar-collapse .avatar.avatar-aurora {
+.user-bar-container.user-bar-container-collapse .avatar.avatar-aurora {
     border: #0ebb50 3px solid;
 }
 
-.user-bar.user-bar-collapse .collapse-btn  {
+.user-bar-container.user-bar-container-collapse .collapse-btn  {
     right:2px;
 }
 

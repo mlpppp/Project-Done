@@ -14,7 +14,8 @@ export default function UserBar() {
         setIsCollapse(!isCollapse)
     }
     return (
-            <div className={`user-bar ${isCollapse ? 'user-bar-collapse':''}`}>
+        <div id="user-bar">
+            <div className={`user-bar-container ${isCollapse ? 'user-bar-container-collapse':''}`}>
                 <h3>All Users</h3>
                 <div className="user-status-list">
                     {error && <p className='error'>{error}</p> }
@@ -32,5 +33,6 @@ export default function UserBar() {
                 { isCollapse && <img src={arrowLeft} alt="" className='collapse-btn'
                     onClick={handleFolding}/>}
             </div>
+        </div>
     )
 }
