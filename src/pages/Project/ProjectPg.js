@@ -14,9 +14,11 @@ export default function ProjectPg() {
 
     let userAvatars;
     let userNames;
+    let userOnline;
     if(userMeta) {
         userAvatars = mapUserMetaToHash(userMeta, 'photoURL')
         userNames = mapUserMetaToHash(userMeta, 'displayName')
+        userOnline = mapUserMetaToHash(userMeta, 'online')
     }
 
     return (
@@ -25,12 +27,14 @@ export default function ProjectPg() {
                 <ProjectBrief 
                     document={document}
                     userAvatars={userAvatars}
-                    userNames={userNames}/>
+                    userNames={userNames}
+                    userOnline={userOnline}/>
             }
 
             {document && userMeta && 
                 <ProjectComment
                     commentIdList={document.comments}
+                    assignToList={document.assignTo}
                     userAvatars={userAvatars}
                     userNames={userNames}
                     prjId={id}/>

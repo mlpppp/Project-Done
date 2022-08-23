@@ -77,10 +77,6 @@
     text-align: center !important;
 }
 
-.user-bar-container.user-bar-container-collapse .avatar.avatar-aurora {
-    border: #0ebb50 3px solid;
-}
-
 .user-bar-container.user-bar-container-collapse .collapse-btn  {
     right:2px;
 }

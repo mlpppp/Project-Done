@@ -1,7 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import DashboardIcon from '../assets/dashboard_icon.svg'
 import AddIcon from '../assets/add_icon.svg'
-import { dummyAvatar } from './UserBar'
 import './Navbar.css'
 export default function Navbar({user}) {
     return (

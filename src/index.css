@@ -107,6 +107,10 @@ input, textarea {
   height: var(--avatar-large);
 }
 
+.avatar-aurora {
+  border: #24924e 3px solid;
+}
+
 .card {
   background: #fff;
   box-sizing: border-box;

@@ -4,9 +4,6 @@ import arrowRight from '../assets/arrow_circle_right.svg'
 import arrowLeft from '../assets/arrow_circle_left.svg'
 import './UserBar.css'
 
-export const dummyAvatar = 'https://avatars.dicebear.com/api/human/42.svg'
-export const dummyUsers = [{name: "marine", isOnline:true},{name: "yorha", isOnline:false},{name: "foo", isOnline:true},{name: "doo", isOnline:false}]
-
 export default function UserBar() {
     const {documents:users, error} = useCollection('users')
     const [isCollapse, setIsCollapse] =  useState(false)

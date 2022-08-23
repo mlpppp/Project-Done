@@ -1,7 +1,8 @@
 import { useAuthContext } from '../../hooks/useAuthContext'
 import './ProjectBrief.css'
-export default function ProjectBrief( {document, userAvatars, userNames} ) {
+export default function ProjectBrief( {document, userAvatars, userNames, userOnline} ) {
     const  {user} = useAuthContext()
+    console.log(userOnline)
     return (   
     <div className="project-brief">          
         <div className="project-detail card">
@@ -11,8 +12,13 @@ export default function ProjectBrief( {document, userAvatars, userNames} ) {
             <p className='text-content'>{document.prjDetail}</p>
             <h4>Project is assigned to:</h4>
             {document.assignTo.map((AssignUser)=>(                               
-                <img src={userAvatars[AssignUser]} key={AssignUser} className='avatar-large'/>
+                <img src={userAvatars[AssignUser]} 
+                        key={AssignUser} 
+                        className={`avatar-large ${userOnline[AssignUser] ? 'avatar-aurora':''}`}/>
             ))} 
+
+
+
         </div>
             { document.createdBy===user.uid && <button className='complete-btn btn'>Mark as Complete</button>}
     </div> 

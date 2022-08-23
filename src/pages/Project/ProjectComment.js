@@ -6,7 +6,7 @@ import useFetchListId from "../../hooks/useFetchListId";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import './ProjectComment.css'
 
-export default function ProjectComment({userAvatars, userNames, commentIdList, prjId}) {
+export default function ProjectComment({userAvatars, userNames, commentIdList, prjId, assignToList}) {
     const  [comment, setComment] = useState('')
     const  [commentError, setCommentError] = useState(null)
     const  [remoteError, setRemoteError] = useState(null)
@@ -20,7 +20,13 @@ export default function ProjectComment({userAvatars, userNames, commentIdList, p
         setRemoteError(null)
         if (comment.trim().split(' ').length < 2) {
             setCommentError('Please add comment of at least 2 words.')
-            console.log(commentError);
+            setComment('')
+            return
+        }
+
+        if (! assignToList.includes(user.uid)) {
+            setCommentError('Only member of the project can leave a comment.')
+            setComment('')
             return
         }
 
@@ -39,7 +45,6 @@ export default function ProjectComment({userAvatars, userNames, commentIdList, p
             addResponse = await ref.add(commentDoc)
           }
           catch (err) {
-            console.log(err.message )
             setRemoteError(err.message)
             return
         }
