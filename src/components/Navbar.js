@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom'
 import DashboardIcon from '../assets/dashboard_icon.svg'
 import AddIcon from '../assets/add_icon.svg'
+import Archive from '../assets/archive.svg'
 import './Navbar.css'
 export default function Navbar({user}) {
     return (
@@ -19,6 +20,11 @@ export default function Navbar({user}) {
                         <NavLink exact to="/create">
                             <img src={AddIcon} alt="" />
                             <p>New Project</p>
+                        </NavLink>
+
+                        <NavLink exact to="/archive">
+                            <img src={Archive} id='archive-icon' alt="" />
+                            <p>Archived</p>
                         </NavLink>
                 </div>
             </div>

@@ -1,6 +1,8 @@
 import { AuthContext } from "../contexts/AuthContext"
 import { useContext } from "react"
 
+//! provide user auth from firestore
+
 export const useAuthContext = () => {
   const context = useContext(AuthContext)
 

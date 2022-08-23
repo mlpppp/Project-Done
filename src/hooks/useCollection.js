@@ -1,6 +1,9 @@
 import { useEffect, useState, useRef } from "react"
 import { projectFirestore } from "../firebase/config"
 
+// ! firestore collection subscription, 
+  //! additional query and order option
+
 export const useCollection = (collection, _query, _orderBy) => {
   const [documents, setDocuments] = useState(null)
   const [error, setError] = useState(null)

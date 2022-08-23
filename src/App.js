@@ -13,6 +13,7 @@ import LoginPg from './pages/LoginPg'
 import ProjectPg from './pages/Project/ProjectPg';
 import CreatePrjPg from './pages/CreatePrjPg';
 import SignupPg from './pages/SignupPg'
+import ArchivePg from './pages/ArchivePg';
 
 function App() {
   const { user, authIsReady } = useAuthContext()
@@ -42,6 +43,11 @@ function App() {
 
               <Route exact path='/create'>
                 {user && <CreatePrjPg/> }
+                {!user && <Redirect to='/login'/> }
+              </Route>
+
+              <Route exact path='/archive'>
+                {user && <ArchivePg/> }
                 {!user && <Redirect to='/login'/> }
               </Route>
 

@@ -3,6 +3,10 @@ import { projectAuth, projectStorage } from '../firebase/config'
 import { useAuthContext } from './useAuthContext'
 import { projectFirestore } from '../firebase/config'
 
+// ! manage firestore sign up by email, plus thumbnail and displayName setup
+  // ! thumbnail using firebase storage, access by url
+  // ! also setup user meta document in collection: user
+
 export const useSignup = () => {
   const [isCancelled, setIsCancelled] = useState(false)
   const [error, setError] = useState(null)

@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react"
 import { projectFirestore } from "../firebase/config"
-// fetch array of documents from firestore, based of array of doc id
-    // input: 
+//! fetch array of documents from firestore, based of array of doc id
+    //! input: 
         // collection: collection name  
         // idArray: list of doc ids  
+        
 export default function useFetchListId(collection, idArray) {
     const [documents, setDocuments] = useState('')
     const [error, setError] = useState('')

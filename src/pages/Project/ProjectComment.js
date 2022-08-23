@@ -3,6 +3,8 @@ import firebase from 'firebase/app';
 import { timestamp, projectFirestore } from "../../firebase/config"
 import { useAuthContext } from "../../hooks/useAuthContext";
 import useFetchListId from "../../hooks/useFetchListId";
+import useUpdate from "../../hooks/useUpdate";
+import {useFirestore} from "../../hooks/useFirestore";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import './ProjectComment.css'
 
@@ -12,57 +14,53 @@ export default function ProjectComment({userAvatars, userNames, commentIdList, p
     const  [remoteError, setRemoteError] = useState(null)
     const { user } =  useAuthContext()
     const {documents:commentList, error:commentListError} = useFetchListId('comments', commentIdList)
-
+    const {update, error} = useUpdate('projects', prjId)
+    const {addDocument, response} = useFirestore('comments')
     // submit
     const handleComment = async (e) => {
         e.preventDefault()
         setCommentError(null)
         setRemoteError(null)
+
+        // check comment 
         if (comment.trim().split(' ').length < 2) {
             setCommentError('Please add comment of at least 2 words.')
             setComment('')
             return
         }
-
         if (! assignToList.includes(user.uid)) {
             setCommentError('Only member of the project can leave a comment.')
             setComment('')
             return
         }
 
-        // add document
+        // make document
         const commentDoc = {
             comment:comment,
             createdBy:user.uid,
             prjId:prjId,
-            createdAt:timestamp.fromDate(new Date()), 
         }
 
         // submit document, get comment id
-        const ref = projectFirestore.collection('comments')
         let addResponse;
         try {
-            addResponse = await ref.add(commentDoc)
-          }
-          catch (err) {
+            addResponse = await addDocument(commentDoc)
+        } catch (err) {
             setRemoteError(err.message)
             return
         }
-      
-        if (addResponse) {
-                try {
-                    // add comment id to project document
-                    await projectFirestore.collection('projects').doc(prjId).update({
-                        comments: firebase.firestore.FieldValue.arrayUnion(addResponse.id)
-                    })
-                    setComment('')
-                } 
-                catch (error) {
-                    setRemoteError(error.message)
-                    return 
-                }
 
-            }       
+        if (addResponse) {
+            try {
+                // add comment id to project document
+                await update('comments', 'append', addResponse.id)
+                setComment('')
+            } 
+            catch (error) {
+                setRemoteError(error.message)
+                return 
+            }
+        }       
         else {
             setRemoteError("cannot get response from upload comment")
             return

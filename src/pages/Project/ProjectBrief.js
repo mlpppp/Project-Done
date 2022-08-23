@@ -1,8 +1,22 @@
+import { useState } from 'react'
 import { useAuthContext } from '../../hooks/useAuthContext'
+import useUpdate from '../../hooks/useUpdate'
+import { useHistory } from 'react-router-dom'
 import './ProjectBrief.css'
 export default function ProjectBrief( {document, userAvatars, userNames, userOnline} ) {
     const  {user} = useAuthContext()
-    console.log(userOnline)
+    const {update, error} = useUpdate('projects', document.id)
+    const [remoteError, setRemoteError] = useState('')
+    const history = useHistory()
+
+    const handleMarkComplete = async () => {
+        await update('isCompleted', 'set', true)
+        if (error) {
+            setRemoteError(error)
+        } else {
+            history.push('/')
+        }
+    }
     return (   
     <div className="project-brief">          
         <div className="project-detail card">
@@ -16,11 +30,11 @@ export default function ProjectBrief( {document, userAvatars, userNames, userOnl
                         key={AssignUser} 
                         className={`avatar-large ${userOnline[AssignUser] ? 'avatar-aurora':''}`}/>
             ))} 
-
-
-
         </div>
-            { document.createdBy===user.uid && <button className='complete-btn btn'>Mark as Complete</button>}
+            { document.createdBy===user.uid && 
+                <button className='complete-btn btn' 
+                        onClick={()=>handleMarkComplete()}>Mark as Complete</button>}
+            {remoteError && <p className='error'>{remoteError}</p>  }
     </div> 
   )
 }

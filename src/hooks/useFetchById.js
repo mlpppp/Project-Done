@@ -1,5 +1,7 @@
 import { useEffect, useState} from "react"
 import { projectFirestore } from "../firebase/config"
+
+//! firestore fetch single document 
 export default function useFetchById(collection, id) {
     const [document, setDocument] =  useState(null)
     const [error, setError] =  useState(null)

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import './HomePg.css'
 // components
 import FilterSelectBar from './FilterSelectBar'

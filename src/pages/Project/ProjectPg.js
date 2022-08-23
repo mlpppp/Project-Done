@@ -25,7 +25,7 @@ export default function ProjectPg() {
         <div className="project-pg">
             {document && userMeta &&
                 <ProjectBrief 
-                    document={document}
+                    document={{...document, id:id}}
                     userAvatars={userAvatars}
                     userNames={userNames}
                     userOnline={userOnline}/>

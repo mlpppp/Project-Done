@@ -3,6 +3,8 @@ import { projectAuth } from '../firebase/config'
 import { useAuthContext } from './useAuthContext'
 import { projectFirestore } from '../firebase/config'
 
+// ! manage firestore log in
+
 export const useLogin = () => {
   const [isCancelled, setIsCancelled] = useState(false)
   const [error, setError] = useState(null)

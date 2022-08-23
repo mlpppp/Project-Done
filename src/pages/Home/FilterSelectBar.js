@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './FilterSelectBar.css'
 const projectCategoriesOptions = ['all', 'mine', 'development', 'design', 'sales', 'marketing', ]
+
 export default function FilterSelectBar( {setFilter} ) {
     const [selected, setSelected] = useState('all')
     const handleClickFilter = (filter) => {

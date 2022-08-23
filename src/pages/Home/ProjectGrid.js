@@ -1,6 +1,7 @@
 import { useAuthContext } from '../../hooks/useAuthContext'
 import { useCollection } from '../../hooks/useCollection'
 import { useHistory } from 'react-router-dom'
+import { mapUserMetaToHash } from '../../hooks/utils'
 import './ProjectGrid.css' 
 
 export default function ProjectGrid({filter}) {
@@ -28,22 +29,12 @@ export default function ProjectGrid({filter}) {
         }
     }
     
-    const mapUserMetaToHash = (userMeta) => {
-        // map array of user document to object: {uid:photoURL}
-        const initValue = {}
-        return userMeta.reduce((accumulator, user) => {
-            // console.log(user);
-            return {
-                ...accumulator,
-                [user.uid]:user.photoURL}
-        }, initValue)
-    }
     
     let filteredDocuments; 
     let UserMetaHash;
     if (documents && userMeta) {
         filteredDocuments = filterFunction(documents)
-        UserMetaHash = mapUserMetaToHash(userMeta)
+        UserMetaHash = mapUserMetaToHash(userMeta, 'photoURL')
     }
 
     const handleRedirect = (id)=>{
