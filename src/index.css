@@ -107,3 +107,10 @@ input, textarea {
   height: var(--avatar-large);
 }
 
+.card {
+  background: #fff;
+  box-sizing: border-box;
+  padding: 15px;
+  box-shadow: 5px 5px rgba(0, 0, 0, 0.05);
+}
+

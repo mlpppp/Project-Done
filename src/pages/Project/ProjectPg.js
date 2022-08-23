@@ -20,7 +20,7 @@ export default function ProjectPg() {
     }
 
     return (
-        <div className="project">
+        <div className="project-pg">
             {document && userMeta &&
                 <ProjectBrief 
                     document={document}

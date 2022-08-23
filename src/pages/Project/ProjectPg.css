@@ -1,7 +1,8 @@
-.project {
+.project-pg {
     display: flex;
     flex-direction: row;
     margin-top: 80px;
+    padding: 0 60px;
 }
 
 

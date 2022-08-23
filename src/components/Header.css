@@ -1,8 +1,12 @@
 .header {
+    position: sticky;
+    margin: 0 !important;
+    padding: 0 60px;
+    top:0;
     display: flex;
     justify-content: space-between;
-    height: 95px;
-    /* background: #787272; */
+    height: 50px;
+    background: #8f8df8;
 }
 
 .header .logo {
@@ -13,6 +17,18 @@
 .header .logo h4{
     font-size: 1.1em;
     margin-left: 10px;
+    color: #fff;
+}
+
+.header .logo a {
+    filter: invert(100%);
+}
+
+.header .header-buttons {
+    align-self: center;
+}
+.header-buttons a {
+    margin-left: 20px !important;
 }
 
 .header>a {
@@ -21,4 +37,8 @@
 
 .header .btn {
     margin: auto 0;
+}
+
+.header .btn:hover {
+    background: rgba(255, 255, 255, 0.505);
 }

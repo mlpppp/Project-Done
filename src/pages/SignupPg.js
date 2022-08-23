@@ -1,4 +1,4 @@
-import React from 'react'
+import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { useSignup } from '../hooks/useSignup' 
 import './SignupPg.css'
@@ -64,6 +64,7 @@ export default function SignupPg() {
           
           {!isPending && <button className="btn">Sign up</button>}
           {isPending && <button className="btn" disabled>Loading</button>}
+          <p className='signup-link'>Already have an account? <Link exact to={'/login'}>Login</Link></p>
         </div>
       </form>
     </div>

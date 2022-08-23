@@ -14,22 +14,16 @@ export default function ProjectGrid({filter}) {
     const filterFunction = (documents) => {
         switch(filter) {
           case 'all':
-            console.log("filtering all");
             return documents
           case 'mine':
-            console.log("filtering mine");
             return documents.filter((doc)=>doc.assignTo.includes(user.uid))
           case 'development':
-            console.log("filtering development");
             return documents.filter((doc)=>doc.prjCategories.includes('development'))
           case 'design':
-              console.log("filtering design");
               return documents.filter((doc)=>doc.prjCategories.includes('design'))
           case 'sales':
-            console.log("filtering sales");
             return documents.filter((doc)=>doc.prjCategories.includes('sales'))
           case 'marketing':
-            console.log("filtering marketing");              
             return documents.filter((doc)=>doc.prjCategories.includes('marketing'))
         }
     }
@@ -63,12 +57,13 @@ export default function ProjectGrid({filter}) {
         {(filteredDocuments===undefined ||filteredDocuments.length===0) && <p>"Nothing to be displayed"</p> }
         {error && <p>{error}</p> }
         {filteredDocuments && UserMetaHash && filteredDocuments.map((doc)=>(
-            <div className="card project" key={doc.id} onClick={()=>handleRedirect(doc.id)}>
+            <div className="card project-card" key={doc.id} onClick={()=>handleRedirect(doc.id)}>
                 <h4>{doc.prjName}</h4>
-                <p>{`Due by ${doc.dueDate.toDate().toDateString()}`}</p>    
+                <p className='timestamp'>{`Due by ${doc.dueDate.toDate().toDateString()}`}</p>    
                 <hr/>
+                
                 {doc.assignTo.map((AssignUser)=>(                               
-                    <img src={UserMetaHash[AssignUser]} key={AssignUser} />
+                    <img src={UserMetaHash[AssignUser]} key={AssignUser} className='avatar' />
                 ))}         
             </div>
         )) }

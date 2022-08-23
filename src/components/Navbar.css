@@ -1,6 +1,7 @@
 nav {
     background: var(--primary-color);
     box-shadow: 5px 0px 5px rgba(0, 0, 0, 0.05);
+    width: 220px;
 }
 
 #nav-container {
@@ -65,6 +66,6 @@ nav {
 }
 
 .nav-selector a:nth-child(2) p{
-    margin-right: 70px;
+    margin-right: 50px;
 }
 

@@ -1,3 +1,27 @@
-.project-filter .active {
-    color: var(--primary-color)
+.project-filter {
+    background: #fff;
+    padding: 10px 5px;
+    box-shadow: 5px 0px 5px rgba(0, 0, 0, 0.05);
+    border-radius: 5px;
 }
+
+
+.project-filter .active {
+    color: var(--primary-color);
+}
+
+.project-filter span {
+    margin-right: 15px;
+}
+
+.project-filter button {
+    color: var(--text-color);
+    font-size: 1em;
+    font-weight: 800;
+    background: none;
+    border: none;
+    border-right: solid var(--text-color) 1px;
+}
+
+
+
