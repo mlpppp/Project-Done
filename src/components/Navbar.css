@@ -66,6 +66,17 @@ nav {
     margin-right: 100px;
 }
 
+.nav-selector a:hover{
+    background: rgb(235, 234, 234);
+    color: #555;
+    border-radius: 20px 0 0 20px;
+
+}
+.nav-selector a:hover img{
+    filter: invert(20%);
+}
+
+
 .nav-selector a:nth-child(2) p{
     margin-right: 50px;
 }

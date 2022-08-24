@@ -8,3 +8,4 @@ export const mapUserMetaToHash = (userMeta, field) => {
             [user.uid]:user[field]}
     }, initValue)
 }
+

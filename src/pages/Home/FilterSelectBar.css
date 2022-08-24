@@ -3,6 +3,7 @@
     padding: 10px 5px;
     box-shadow: 5px 0px 5px rgba(0, 0, 0, 0.05);
     border-radius: 5px;
+    display: flex;
 }
 
 
@@ -11,7 +12,8 @@
 }
 
 .project-filter span {
-    margin-right: 15px;
+    margin-right: 10px;
+    font-weight: 600;
 }
 
 .project-filter button {
@@ -21,7 +23,14 @@
     background: none;
     border: none;
     border-right: solid var(--text-color) 1px;
+    cursor: pointer;
 }
 
+.project-filter button:hover {
+    color: rgba(73, 73, 73);
+}
 
+.sort-section {
+    margin-left: 45px;
+}
 

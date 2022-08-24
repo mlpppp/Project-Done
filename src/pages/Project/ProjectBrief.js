@@ -31,7 +31,7 @@ export default function ProjectBrief( {document, userAvatars, userNames, userOnl
                         className={`avatar-large ${userOnline[AssignUser] ? 'avatar-aurora':''}`}/>
             ))} 
         </div>
-            { document.createdBy===user.uid && 
+            { document.createdBy===user.uid && !document.isCompleted &&
                 <button className='complete-btn btn' 
                         onClick={()=>handleMarkComplete()}>Mark as Complete</button>}
             {remoteError && <p className='error'>{remoteError}</p>  }

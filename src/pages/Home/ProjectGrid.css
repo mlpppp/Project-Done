@@ -12,6 +12,10 @@
     cursor: pointer;
 }
 
+.project-grid .project-card:hover {
+    background: rgb(234, 234, 234);
+}
+
 .project-card .timestamp {
     color: var(--primary-color);
     font-weight: 500;

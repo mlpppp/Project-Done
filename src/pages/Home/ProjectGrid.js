@@ -2,9 +2,10 @@ import { useAuthContext } from '../../hooks/useAuthContext'
 import { useCollection } from '../../hooks/useCollection'
 import { useHistory } from 'react-router-dom'
 import { mapUserMetaToHash } from '../../hooks/utils'
+import {sortArrayByObjectValue_date} from '../../hooks/utils'
 import './ProjectGrid.css' 
 
-export default function ProjectGrid({filter}) {
+export default function ProjectGrid({filter, sort:sortBy, useCompleted}) {
     const { documents, error } = useCollection('projects')
     const { documents:userMeta, userMetaError } = useCollection('users')
     const { user } =  useAuthContext()
@@ -28,17 +29,38 @@ export default function ProjectGrid({filter}) {
             return documents.filter((doc)=>doc.prjCategories.includes('marketing'))
         }
     }
-    
+    const filterCompleted = (documents) => {
+        if (useCompleted) {
+          return documents.filter((doc)=>doc.isCompleted)
+        } else {
+          return documents.filter((doc)=>(doc.isCompleted === false))
+        }
+    }
+
+    const sortArrayDocuments = (array, sortBy) => {
+      array.sort((a, b) => {
+        if (a[sortBy].toDate() > b[sortBy].toDate()) {
+          if (sortBy === 'dueDate') return 1
+          else return -1
+        }
+        if (a[sortBy].toDate() < b[sortBy].toDate()) {
+          if (sortBy === 'dueDate') return -1
+          else return 1
+        }
+        return 0
+      })
+    }
     
     let filteredDocuments; 
     let UserMetaHash;
     if (documents && userMeta) {
         filteredDocuments = filterFunction(documents)
+        filteredDocuments = filterCompleted(filteredDocuments)
+        sortArrayDocuments(filteredDocuments, sortBy)  
         UserMetaHash = mapUserMetaToHash(userMeta, 'photoURL')
     }
 
     const handleRedirect = (id)=>{
-        console.log("handleRedirect");
         history.push(`/projects/${id}`)
     }
     
