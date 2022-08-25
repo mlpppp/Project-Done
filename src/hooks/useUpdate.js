@@ -5,7 +5,8 @@ import firebase from "firebase"
 // ! update firestore document 
     // ? option:
         // "set": set field
-        // "append": append to list
+        // "append": append to array
+        // "pop": remove a field from array
 
 export default function useUpdate(collection, id) {
     const [error, setError] = useState('')
@@ -19,6 +20,10 @@ export default function useUpdate(collection, id) {
             } else if (option==='append') {
                 await ref.update({
                     [field]: firebase.firestore.FieldValue.arrayUnion(payload)
+                })
+            } else if (option==='pop') {
+                await ref.update({
+                    [field]: firebase.firestore.FieldValue.arrayRemove(payload)
                 })
             }
         } 

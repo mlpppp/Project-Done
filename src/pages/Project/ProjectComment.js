@@ -66,12 +66,18 @@ export default function ProjectComment({userAvatars, userNames, commentIdList, p
             return
         }
     }
+
+    const handleClickComment = () => {
+        // TODO 
+        console.log('aa')
+    }
+
     return (
         <div className="comment-block">
             <h3>Project Comments</h3>
             <div className="comment-list">
                 {commentList && commentList.map((cmt) => (
-                    <div className="project-comment card" key={comment.id}>
+                    <div className="project-comment card" key={comment.id} onClick={()=>handleClickComment()}>
                         <div className="avatar-name">
                             <img src={userAvatars[cmt.createdBy]} className='avatar-small' />
                             <span>{userNames[cmt.createdBy]}</span>

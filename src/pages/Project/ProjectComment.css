@@ -18,6 +18,11 @@
     align-items: center;
 }
 
+.project-comment:hover {
+    cursor: pointer;
+    background: rgb(234, 234, 234);
+}
+
 .project-comment .avatar-name span {
     margin-left: 10px;
     font-weight: 500;

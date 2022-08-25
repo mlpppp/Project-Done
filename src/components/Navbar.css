@@ -7,7 +7,7 @@ nav {
 #nav-container {
     position: sticky;
     top:0;
-    width: auto;
+    width: 220px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -63,8 +63,19 @@ nav {
 
 .nav-selector a p{
     margin-left: 10px;
-    margin-right: 100px;
+    /* margin-right: 100px; */
 }
+
+.nav-selector a #kill-pin{
+    height: 18px;
+    width: 18px;
+    margin: 0 4px 0 auto;
+}
+
+.nav-selector a #kill-pin:hover {
+    filter: invert(60%);
+}
+
 
 .nav-selector a:hover{
     background: rgb(235, 234, 234);

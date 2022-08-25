@@ -2,6 +2,8 @@ import { useAuthContext } from '../../hooks/useAuthContext'
 import { useCollection } from '../../hooks/useCollection'
 import { useHistory } from 'react-router-dom'
 import { mapUserMetaToHash } from '../../hooks/utils'
+import Pin from '../../assets/pin.svg' 
+import useUpdate from '../../hooks/useUpdate'
 import './ProjectGrid.css' 
 
 // ! field <filter>, <sort> is currently required, which provide filter by prjCategories and sort by either createdAt or dueDate
@@ -15,6 +17,8 @@ export default function ProjectGrid({filter, sort:sortBy, useCompleted, TextHigh
     const { documents:userMeta, userMetaError } = useCollection('users')
     const { user } =  useAuthContext()
     const history = useHistory()
+    const {update, updateError} = useUpdate("users", user.uid)
+
     if (userMetaError) throw new Error(userMetaError)
 
     // May use external documents instead of fetching data from database
@@ -72,8 +76,19 @@ export default function ProjectGrid({filter, sort:sortBy, useCompleted, TextHigh
         UserMetaHash = mapUserMetaToHash(userMeta, 'photoURL')
     }
 
-    const handleRedirect = (id)=>{
-        history.push(`/projects/${id}`)
+    const handleCardFunction = (e, doc)=>{
+        // Handle pin
+        if (e.target.className === "pin-button") {
+          handlePin(doc.id, doc.prjName)
+        } 
+        // redirect to project page
+        else {
+          history.push(`/projects/${doc.id}`)
+        }
+    }
+
+    const handlePin = (id, prjName) =>{
+      update('pinList', 'append', {id, prjName})
     }
 
   return (
@@ -81,13 +96,15 @@ export default function ProjectGrid({filter, sort:sortBy, useCompleted, TextHigh
         {(filteredDocuments===undefined ||filteredDocuments.length===0) && <p>"Nothing to be displayed"</p> }
         {error && <p>{error}</p> }
         {filteredDocuments && UserMetaHash && filteredDocuments.map((doc)=>(
-            <div className="card project-card" key={doc.id} onClick={()=>handleRedirect(doc.id)}>
-                {(!TextHighlighter || !keyword) && <h4>{doc.prjName}</h4>}
-                {TextHighlighter && keyword && 
-                  <h4><TextHighlighter 
-                              keyword={keyword}
-                              raw={doc.prjName}/></h4>}
-
+            <div className="card project-card" key={doc.id} onClick={(e)=>handleCardFunction(e, doc)}>
+                <div className="row">
+                  {(!TextHighlighter || !keyword) && <h4>{doc.prjName}</h4>}
+                  {TextHighlighter && keyword && 
+                    <h4><TextHighlighter 
+                                keyword={keyword}
+                                raw={doc.prjName}/></h4>}
+                  <img src={Pin} className="pin-button"/>     
+                </div>
                 {sortBy === 'dueDate' && <p className='timestamp'>{`Due by ${doc.dueDate.toDate().toDateString()}`}</p>    }
                 {sortBy === 'createdAt' && <p className='timestamp'>{`Created at ${doc.createdAt.toDate().toDateString()}`}</p>    }
                 <hr/>
