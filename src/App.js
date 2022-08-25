@@ -13,6 +13,7 @@ import LoginPg from './pages/LoginPg'
 import ProjectPg from './pages/Project/ProjectPg';
 import CreatePrjPg from './pages/CreatePrjPg';
 import SignupPg from './pages/SignupPg'
+import Search from './pages/Search';
 
 function App() {
   const { user, authIsReady } = useAuthContext()
@@ -49,6 +50,11 @@ function App() {
                 {user && <HomePg useCompleted={true}/> }
                 {!user && <Redirect to='/login'/> }
               </Route>
+
+              <Route exact path='/search'>
+                {user && <Search/> }
+                {!user && <Redirect to='/login'/> }
+              </Route> 
 
               <Route exact path='/projects/:id'>
                 {user && <ProjectPg/> }

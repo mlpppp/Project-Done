@@ -24,11 +24,16 @@
     filter: invert(100%);
 }
 
-.header .header-buttons {
+.header .logout-header-utils {
     align-self: center;
 }
-.header-buttons a {
+.logout-header-utils a {
     margin-left: 20px !important;
+}
+
+.login-header-utils {
+    display: flex;
+    justify-content: end;
 }
 
 .header>a {
@@ -42,3 +47,4 @@
 .header .btn:hover {
     background: rgba(255, 255, 255, 0.505);
 }
+

@@ -29,7 +29,9 @@
 .project-filter button:hover {
     color: rgba(73, 73, 73);
 }
-
+.filter-section {
+    margin-left: 10px;
+}
 .sort-section {
     margin-left: 45px;
 }

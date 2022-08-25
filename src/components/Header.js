@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import {useLogout} from '../hooks/useLogout'
 import doubleArrow from '../assets/double_arrow_down.svg'
 import { useAuthContext } from '../hooks/useAuthContext'
+import Searchbar from './Searchbar'
 import './Header.css'
 export default function Header() {
   const  {user} = useAuthContext()
@@ -17,12 +18,15 @@ export default function Header() {
         </div>
 
         {!user &&
-        <div className="header-buttons">
+        <div className="logout-header-utils">
           <Link to='/login' className='btn'>Login</Link> 
           <Link to='/signup' className='btn'>SignUp</Link> 
         </div>}
+        {user && <div className="login-header-utils">
+          <Searchbar/>
+          <button className='btn logout-button' onClick={handleLogout}>Logout</button>
+        </div> }
 
-        {user &&  <button className='btn logout-button' onClick={handleLogout}>Logout</button>}
     </header>
   )
 }

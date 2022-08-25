@@ -1,0 +1,25 @@
+.search-bar {
+	display: flex;
+	color: aliceblue;
+	margin-right: 40px;
+}
+
+.search-bar label {
+	margin: auto 8px;
+	box-sizing: border-box;
+
+}
+
+
+.search-bar p {
+	/* width: 30px !important; */
+	padding: 0;
+}
+
+.search-bar input {
+	margin-left: 5px;
+	padding: 0 5px;
+	height: 32px;
+	width: 180px;
+	margin: auto 0;
+}
