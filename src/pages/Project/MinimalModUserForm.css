@@ -1,0 +1,15 @@
+.mod-user-form {
+    width: 260px;
+}
+
+.mod-user-form h4 {
+    margin-bottom: 10px !important;
+}
+
+.mod-user-form .select {
+    margin-bottom: 10px !important;
+}
+
+.mod-user-form .btn:last-child{
+    margin-left: 10px;
+}

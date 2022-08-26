@@ -59,7 +59,9 @@
     display: block;
 }
 
-
+.user-bar-container .collapse-btn:hover {
+    filter: invert(50%);
+} 
 .user-bar-container.user-bar-container-collapse {
     display:flex;
     flex-direction: column;
