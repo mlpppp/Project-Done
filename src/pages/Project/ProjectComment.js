@@ -1,12 +1,18 @@
 import { useState } from "react";
-import firebase from 'firebase/app';
-import { timestamp, projectFirestore } from "../../firebase/config"
 import { useAuthContext } from "../../hooks/useAuthContext";
 import useFetchListId from "../../hooks/useFetchListId";
 import useUpdate from "../../hooks/useUpdate";
 import {useFirestore} from "../../hooks/useFirestore";
+
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
+
+import tDown from '../../assets/thumb_down.svg'
+import tUp from '../../assets/thumb_up.svg'
+import chat from '../../assets/chat.svg'
 import './ProjectComment.css'
+
+import Modal from "../../components/Modal";
+import CommentModal from "../../components/CommentModal";
 
 export default function ProjectComment({userAvatars, userNames, commentIdList, prjId, assignToList}) {
     const  [comment, setComment] = useState('')
@@ -16,6 +22,11 @@ export default function ProjectComment({userAvatars, userNames, commentIdList, p
     const {documents:commentList, error:commentListError} = useFetchListId('comments', commentIdList)
     const {update, error} = useUpdate('projects', prjId)
     const {addDocument, response} = useFirestore('comments')
+
+    // commentModal
+    const [commentModalOn, setCommentModalOn] = useState(false)
+    const [commentModalId, setCommentModalId] = useState('')
+    
     // submit
     const handleComment = async (e) => {
         e.preventDefault()
@@ -67,26 +78,38 @@ export default function ProjectComment({userAvatars, userNames, commentIdList, p
         }
     }
 
-    const handleClickComment = () => {
-        // TODO 
-        console.log('aa')
+    // commentModal
+    const handleClickComment = (commentId) => {
+        setCommentModalOn(true)
+        setCommentModalId(commentId)
+        console.log(commentId)
     }
 
     return (
         <div className="comment-block">
             <h3>Project Comments</h3>
+
             <div className="comment-list">
                 {commentList && commentList.map((cmt) => (
-                    <div className="project-comment card" key={comment.id} onClick={()=>handleClickComment()}>
-                        <div className="avatar-name">
-                            <img src={userAvatars[cmt.createdBy]} className='avatar-small' />
-                            <span>{userNames[cmt.createdBy]}</span>
-                        </div>
-                        <p className="timestamp" >{`${formatDistanceToNow(cmt.createdAt.toDate(), {addSuffix:true})}`}</p>
-                        <p className="text-content">{cmt.comment}</p>
+                    <div className="project-comment card" key={cmt.id} onClick={()=>handleClickComment(cmt.id)}>
+                        
+                        <div className="comment-content">
+                            <div className="avatar-name">
+                                <img src={userAvatars[cmt.createdBy]} className='avatar-small' />
+                                <span>{userNames[cmt.createdBy]}</span>
+                            </div>
+                            <p className="timestamp" >{`${formatDistanceToNow(cmt.createdAt.toDate(), {addSuffix:true})}`}</p>
+                            <p className="text-content">{cmt.comment}</p>   
+                        </div>  
+                        <div className="comment-indicators">
+                            <img src={tUp} alt="" />                
+                            <img src={tDown} alt="" />                
+                            <img src={chat} alt="" />    
+                        </div>            
                     </div>
                 ))}
             </div>
+
             <div className="add-project-comment">
                 <h3>Leave a Comment:</h3>
                 <form onSubmit={handleComment}>
@@ -98,6 +121,10 @@ export default function ProjectComment({userAvatars, userNames, commentIdList, p
                     <button className='btn'>Submit</button>
                 </form>
             </div>
+            {commentModalOn && 
+            <Modal closeModal={()=>setCommentModalOn(false)}>
+                {commentModalId}
+            </Modal>}
         </div>
     )
 }

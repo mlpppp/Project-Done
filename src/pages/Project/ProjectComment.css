@@ -11,6 +11,13 @@
 
 .comment-list .project-comment{
     margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.comment-list .comment-indicators {
+    align-self: end;
 }
 
 .comment-list .project-comment .avatar-name{
@@ -38,6 +45,14 @@
     font-size: 1.1em;
 }
 
+.project-comment .comment-indicators img {
+    width: 24px;
+    height: 24px;
+    filter: invert(40%);
+}
+
+/* add section */
+
 .add-project-comment form textarea {
     min-height: 100px;
     margin-bottom: 10px;
@@ -47,3 +62,4 @@
 .add-project-comment form .btn {
     margin-bottom: 15px;
 }
+

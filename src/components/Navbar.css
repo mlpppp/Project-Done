@@ -30,6 +30,21 @@ nav {
     width: var(--avatar-large);
     height: var(--avatar-large);
 }
+.user-info .row  {
+    justify-content: center;
+}
+
+.user-info .row img {
+    height: 30px;
+    width: 30px;
+    filter: invert(100%) ;
+    margin-left: 10px;
+}
+
+.user-info .row img:hover {
+    filter: invert(80%) ;
+}
+
 
 .nav-selector {
     margin-top: 60px;

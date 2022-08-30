@@ -1,17 +1,27 @@
 import { NavLink } from 'react-router-dom'
+
+import useFetchById from '../hooks/useFetchById'
+import useUpdate from '../hooks/useUpdate'
+
 import DashboardIcon from '../assets/dashboard_icon.svg'
 import AddIcon from '../assets/add_icon.svg'
 import Archive from '../assets/archive.svg'
-import useFetchById from '../hooks/useFetchById'
-import useUpdate from '../hooks/useUpdate'
 import Pin from '../assets/pin.svg' 
 import Close from '../assets/close.svg' 
+import Gear from '../assets/setting.svg' 
+
+import Modal from './Modal'
+import UserInfoModal from './UserInfoModal'
+import { useState } from 'react'
+
 import './Navbar.css'
 
 export default function Navbar({user}) {
     // user pinned projects
     const {document, error} = useFetchById("users", user.uid)
     const {update, UpdateError} = useUpdate('users', user.uid)
+    const [infoModalOpen, setInfoModalOpen] = useState(false)
+    const [infoModalUid, setInfoModalUid] = useState('')
 
     if (document) {
         var pinList = document.pinList;
@@ -30,12 +40,20 @@ export default function Navbar({user}) {
         }
     }
 
+    // modal
+    const handleClickGear = () => {
+        setInfoModalUid(user.uid)
+        setInfoModalOpen(true)
+    }
     return (
         <nav>
             <div id="nav-container">
                 <div className="user-info">
                     <img src={user.photoURL} alt="" className='avatar'/>
-                    <h3>{`Hey, ${user.displayName}`}</h3>
+                    <div className="row">
+                         <h3>{`Hey, ${user.displayName}`}</h3>
+                        <img src={Gear} alt="" onClick={()=>handleClickGear()}/>
+                    </div>
                 </div>
                 <div className="nav-selector">
                         <NavLink exact to="/">
@@ -59,11 +77,14 @@ export default function Navbar({user}) {
                                 <p>{pinPrj.prjName.substring(0, 12)+'...'}</p>
                                 <img src={Close} id='kill-pin' onClick={(e)=>deletePin(e, pinPrj)}/>
                             </NavLink>
-                        ))}
+                        ))}                    
                 </div>
             </div>
-
-
+            {infoModalOpen && 
+                <Modal closeModal={()=>setInfoModalOpen(false)}> 
+                    <UserInfoModal uid={infoModalUid}/>
+                </Modal>
+            }
         </nav>
   )
 }

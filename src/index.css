@@ -122,3 +122,27 @@ input, textarea {
   display: flex;
   flex-direction: row;
 }
+
+.col {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-overlay {
+  position: fixed;
+  z-index: 5; /* Sit on top */
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.3); /* Black w/ opacity */
+}  
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5; /* Sit on top */
+  width: auto;
+}

@@ -9,9 +9,9 @@ export default function useFetchListId(collection, idArray) {
     const [documents, setDocuments] = useState('')
     const [error, setError] = useState('')
     useEffect(() => { 
-        console.log(`begin new fetching of ${idArray.length}`)
+        // console.log(`begin new fetching of ${idArray.length}`)
         const fetchAllData = async () => {
-            const docsPromises = idArray.map( async (docId) =>
+            const docsPromises = idArray.map( async (docId) => 
                 projectFirestore.collection(collection).doc(docId).get())
 
             const responses = await Promise.all(docsPromises)

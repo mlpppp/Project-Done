@@ -37,6 +37,10 @@
     margin-left: 8px;
 }
 
+.user-status .avatar:hover {
+    filter: invert(20%);
+}
+
 .user-status p {
     margin-left: 8px;
 }
