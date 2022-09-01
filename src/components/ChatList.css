@@ -1,0 +1,35 @@
+.chat-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.chat-list .chat  {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 6px;
+}
+
+.chat-list .chat p:first-of-type {
+    color: var(--text-color);
+}
+
+.chat-list .chat p:nth-of-type(2) {
+    font-weight: 500;
+}
+.chat-list .chat p:nth-of-type(3){
+    margin-left: auto;
+    font-weight: 400;
+}
+
+.chat-list .chat p:nth-of-type(3):hover{
+    cursor: pointer;
+}
+
+
+.chat-list .chat img {
+    width: 20px;
+    height: 20px;
+    justify-self: center;
+}

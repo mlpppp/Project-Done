@@ -18,7 +18,20 @@
 
 .comment-list .comment-indicators {
     align-self: end;
+    display: flex;
 }
+
+.comment-indicators .chat {
+    margin-left: 10px;
+}
+.comment-indicators .like-button:hover{
+    filter:invert(60%)
+}
+
+.comment-indicators .like-button.liked{
+    filter: invert(40%) sepia(91%) saturate(324%) hue-rotate(90deg) brightness(96%) contrast(100%);
+}
+
 
 .comment-list .project-comment .avatar-name{
     display: flex;

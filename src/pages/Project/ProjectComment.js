@@ -26,6 +26,7 @@ export default function ProjectComment({userAvatars, userNames, commentIdList, p
     // commentModal
     const [commentModalOn, setCommentModalOn] = useState(false)
     const [commentModalId, setCommentModalId] = useState('')
+    const [modalComment, setModalComment] = useState('')
     
     // submit
     const handleComment = async (e) => {
@@ -50,6 +51,8 @@ export default function ProjectComment({userAvatars, userNames, commentIdList, p
             comment:comment,
             createdBy:user.uid,
             prjId:prjId,
+            likeBy:[],
+            chat:[]
         }
 
         // submit document, get comment id
@@ -79,11 +82,38 @@ export default function ProjectComment({userAvatars, userNames, commentIdList, p
     }
 
     // commentModal
-    const handleClickComment = (commentId) => {
-        setCommentModalOn(true)
-        setCommentModalId(commentId)
-        console.log(commentId)
+    const handleClickComment = (e, commentId, comment) => {
+        if ((e.target.classList.contains('like-button')) || (e.target.classList.contains('unlike-button'))) {
+            return
+        } else {
+            setCommentModalOn(true)
+            setCommentModalId(commentId)
+            setModalComment(comment)
+        }
     }
+
+    // like and unlike
+
+    const {update:updateComment, updateCommentError} = useUpdate('comments')
+    const handleLike = (e, commentId) =>{
+        // unlike operation
+        if (e.target.classList.contains('liked')) {
+            updateComment('likeBy', 'pop', user.uid, commentId)
+            e.target.classList.remove('liked')
+            var curLike = Number(e.target.nextElementSibling.innerText)
+            e.target.nextElementSibling.innerText = curLike-1;
+        }
+        // like operation
+        else if (!e.target.classList.contains('liked')) {
+            updateComment('likeBy', 'append', user.uid, commentId)
+            e.target.classList.add('liked')
+            var curLike = Number(e.target.nextElementSibling.innerText)
+            e.target.nextElementSibling.innerText = curLike+1;
+        }
+
+        if(updateCommentError) console.log(updateCommentError)
+    }
+
 
     return (
         <div className="comment-block">
@@ -91,7 +121,7 @@ export default function ProjectComment({userAvatars, userNames, commentIdList, p
 
             <div className="comment-list">
                 {commentList && commentList.map((cmt) => (
-                    <div className="project-comment card" key={cmt.id} onClick={()=>handleClickComment(cmt.id)}>
+                    <div className="project-comment card" key={cmt.id} onClick={(e)=>handleClickComment(e, cmt.id, cmt)}>
                         
                         <div className="comment-content">
                             <div className="avatar-name">
@@ -102,9 +132,14 @@ export default function ProjectComment({userAvatars, userNames, commentIdList, p
                             <p className="text-content">{cmt.comment}</p>   
                         </div>  
                         <div className="comment-indicators">
-                            <img src={tUp} alt="" />                
-                            <img src={tDown} alt="" />                
-                            <img src={chat} alt="" />    
+                            <div className="like">
+                                <img src={tUp} className={`like-button ${cmt.likeBy.includes(user.uid) ? 'liked':''}`} onClick={(e)=>handleLike(e, cmt.id)} />   
+                                <span>{cmt.likeBy.length>0 && cmt.likeBy.length}</span>   
+                            </div>     
+                            <div className="chat">
+                                <img src={chat} alt="" />    
+                                <span>{cmt.chats.length>0 && cmt.chats.length}</span>                            
+                            </div>     
                         </div>            
                     </div>
                 ))}
@@ -121,9 +156,10 @@ export default function ProjectComment({userAvatars, userNames, commentIdList, p
                     <button className='btn'>Submit</button>
                 </form>
             </div>
+
             {commentModalOn && 
             <Modal closeModal={()=>setCommentModalOn(false)}>
-                {commentModalId}
+                <CommentModal commentId={commentModalId} comment={modalComment} userAvatars={userAvatars} userNames={userNames}/>
             </Modal>}
         </div>
     )

@@ -1,0 +1,81 @@
+.comment-modal {
+    width: 32vw;
+    padding: 20px;
+    position: relative;
+}
+
+.comment-modal .delete-comment {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.comment-content .avatar-name span {
+    font-weight: 600;
+    font-size: 1.1em;
+    align-self: center;
+    margin-left: 15px;
+}
+.comment-content .timestamp {
+    color: var(--text-color);
+}
+
+.comment-content .text-content {
+    /* color: var(--text-color); */
+    margin:15px 0;
+    font-size: 1.2em;
+}
+
+.comment-modal .low-area-switch {
+    height: 24px;
+}
+
+.comment-modal hr {
+    margin-top: 0;
+}
+
+.comment-modal .low-area-switch img {
+    width: 20px;
+    height: 20px;
+    margin-right: 15px;
+}
+
+.comment-modal .low-area-switch img:hover {
+    filter: invert(40%) ;
+
+}
+
+/* say */
+
+.comment-modal .say * {
+    display: inline-block;
+}
+/* .comment-modal .say input {
+    width: ;
+} */
+
+/* like */
+
+.comment-modal  .liked-list {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+}
+
+
+.comment-modal  .liked-list .liked-user{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5px;
+}
+
+.comment-modal  .liked-list .liked-user span:first-of-type{
+    margin-left: 10px;
+    font-weight: 600;
+}
+.comment-modal  .liked-list .liked-user p{
+    margin-left: 8px;
+    display: inline-block;
+}
+
+

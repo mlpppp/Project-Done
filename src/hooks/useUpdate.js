@@ -10,10 +10,20 @@ import firebase from "firebase"
 
 export default function useUpdate(collection, id) {
     const [error, setError] = useState('')
- 
-    const ref = projectFirestore.collection(collection).doc(id)
-    
-    const update = async (field, option, payload) => {
+    let ref;
+    if (id) {
+        ref = projectFirestore.collection(collection).doc(id)
+    } else {
+        ref = projectFirestore.collection(collection)
+    }
+
+    const update = async (field, option, payload, id=null ) => {
+        console.log(ref)
+
+        if (id) {
+            console.log(id);
+            ref = projectFirestore.collection(collection).doc(id)
+        }
         try {
             if (option==='set') {
                 await ref.update({[field]: payload})

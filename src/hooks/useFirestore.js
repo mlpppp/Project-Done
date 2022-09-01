@@ -46,7 +46,6 @@ export const useFirestore = (collection) => {
     try {
       const createdAt = timestamp.fromDate(new Date())
       const addedDocument = await ref.add({ ...doc, createdAt })
-      console.log(addedDocument)
       await addedDocument.update({ 
         id:addedDocument.id
       })
