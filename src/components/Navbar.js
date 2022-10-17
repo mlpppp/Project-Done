@@ -82,7 +82,7 @@ export default function Navbar({user}) {
             </div>
             {infoModalOpen && 
                 <Modal closeModal={()=>setInfoModalOpen(false)}> 
-                    <UserInfoModal uid={infoModalUid}/>
+                    <UserInfoModal uid={infoModalUid} resetModal={()=>{setInfoModalOpen(false); setInfoModalOpen(true)}}/>
                 </Modal>
             }
         </nav>

@@ -8,7 +8,8 @@ import Done from '../assets/done.svg'
 import './UserInfoModal.css'
  
 
-export default function UserInfoModal({uid}) {
+export default function UserInfoModal({uid, resetModal}) {
+    console.log(resetModal)
     const { user } = useAuthContext()
     const {document:userMetas, error} = useFetchById("users", uid)
     const {update, error:updateError} = useUpdate("users", uid)
@@ -24,17 +25,11 @@ export default function UserInfoModal({uid}) {
 
     useEffect(()=> {
         if(userMetas && userMetas.bios) {
-            console.log('update from d');
             setUserTitle(userMetas.bios.userTitle)
             setUserEmail(userMetas.bios.userEmail)
             setUserBio(userMetas.bios.userBio)
             setUserStacks(userMetas.bios.userStacks) 
             setIsFirstEdit(false)
-
-            console.log(userMetas)
-            // console.log(userEmail)
-            // console.log(userBio)
-            // console.log(userStacks)
         }
         if(userMetas && !userMetas.bios) {
             setIsFirstEdit(true)
@@ -42,14 +37,6 @@ export default function UserInfoModal({uid}) {
             setUserStacks(userStacks) 
         }
     }, [userMetas]) 
-
-    if(userMetas) {
-    // console.log(userTitle)
-    // console.log(userEmail)
-    // console.log(userBio)
-    // console.log(userStacks)
-}
-
 
 
     const submitUserBio = async () => {
@@ -63,6 +50,7 @@ export default function UserInfoModal({uid}) {
         if (updateError) {
             console.log(updateError);
         }
+        resetModal()
     }
     const cancelBioEdit = () => {
         if (userMetas && userMetas.bios) {

@@ -8,6 +8,7 @@
 .chat-list .chat  {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     margin-bottom: 6px;
 }
 
@@ -18,10 +19,7 @@
 .chat-list .chat p:nth-of-type(2) {
     font-weight: 500;
 }
-.chat-list .chat p:nth-of-type(3){
-    margin-left: auto;
-    font-weight: 400;
-}
+
 
 .chat-list .chat p:nth-of-type(3):hover{
     cursor: pointer;
@@ -32,4 +30,9 @@
     width: 20px;
     height: 20px;
     justify-self: center;
+}
+
+.chat-list .chat #delete-chat:hover{
+    filter: invert(40%);
+    cursor: pointer;
 }

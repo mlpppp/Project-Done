@@ -22,12 +22,10 @@ export default function ChatList({chatsId, userAvatars, userNames, commentId}) {
       <div className="chat-list">
           {chatDocs && chatDocs.map((chat)=>(
               <div className="chat" key={chat.id}>
-                  <p>{`${chat.comment}`}</p>
-                  <p>{` - ${userNames[chat.createdBy]}`}</p>
+                  <p>{`${chat.comment} -`} <i>{userNames[chat.createdBy]}</i> </p>
                   {user.uid === chat.createdBy &&
-                    <p onClick={()=>deleteChat(chat.id)}>delete</p>}
-                  {/* <img src={userAvatars[chat.createdBy] }
-                      className='avatar'/> */}
+                    <p id='delete-chat' onClick={()=>deleteChat(chat.id)}>delete</p>}
+
               </div>
           ))}
       </div>

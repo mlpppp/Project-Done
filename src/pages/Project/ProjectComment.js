@@ -113,8 +113,8 @@ export default function ProjectComment({userAvatars, userNames, commentIdList, p
 
         if(updateCommentError) console.log(updateCommentError)
     }
-
-
+    commentList && console.log(commentList)
+    
     return (
         <div className="comment-block">
             <h3>Project Comments</h3>
@@ -133,12 +133,12 @@ export default function ProjectComment({userAvatars, userNames, commentIdList, p
                         </div>  
                         <div className="comment-indicators">
                             <div className="like">
-                                <img src={tUp} className={`like-button ${cmt.likeBy.includes(user.uid) ? 'liked':''}`} onClick={(e)=>handleLike(e, cmt.id)} />   
-                                <span>{cmt.likeBy.length>0 && cmt.likeBy.length}</span>   
+                                <img src={tUp} className={`like-button ${cmt.likeBy && cmt.likeBy.includes(user.uid) ? 'liked':''}`} onClick={(e)=>handleLike(e, cmt.id)} />   
+                                <span>{cmt.likeBy && cmt.likeBy.length>0 && cmt.likeBy.length}</span>   
                             </div>     
                             <div className="chat">
                                 <img src={chat} alt="" />    
-                                <span>{cmt.chats.length>0 && cmt.chats.length}</span>                            
+                                <span>{cmt.chats && cmt.chats.length>0 && cmt.chats.length}</span>                            
                             </div>     
                         </div>            
                     </div>
