@@ -5,17 +5,17 @@ This project was bootstrapped with [React](https://github.com/facebook/create-re
 # Demo 
 Please visit [Project Done](https://project-management-b274f.firebaseapp.com/) for a live demo.
 # Features
-- User auth and session powered by [Firebase](https://firebase.google.com/)
-- Users:
+ User auth and session powered by [Firebase](https://firebase.google.com/)
+### Users:
   - Users online status checkbar
   - Users bios edit and share
-- Projects:
+### Projects:
   - Creating projects, Assigning team members, Editing team members
   - Pinning projects for easy access
   - Archive Projects
   - Searching Projects by keywords
   - Filtering/Sorting projects 
-- Communication:
+### Communication:
   - Commenting/Issuing within a project
   -  Discussion inside comments/issues   
   -  Like and unlike comments/issues   
